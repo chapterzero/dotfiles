@@ -50,4 +50,3 @@ fi
 
 xset r rate 350 30
 xsetroot -cursor_name left_ptr
-exec i3
