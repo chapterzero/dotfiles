@@ -1,5 +1,5 @@
 # Automatically start ssh agent
-source /home/chapterzero/.ssh/.auto_sshagent.sh
+source $HOME/.ssh/.auto_sshagent.sh
 
 bindkey -v
 bindkey '^P' up-history
@@ -13,7 +13,7 @@ source /usr/share/fzf/completion.zsh
 
 # Environment variables
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin:/home/chapterzero/.config/composer/vendor/bin
+export PATH=$PATH:$GOPATH/bin:$HOME/.config/composer/vendor/bin
 export EDITOR=vim
 export SYSTEMD_EDITOR=vim
 
