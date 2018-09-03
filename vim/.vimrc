@@ -36,18 +36,17 @@ set hidden
 
 " Let vim using X plus register
 set clipboard=unnamedplus
-
-let g:two_firewatch_italics=1
-colorscheme two-firewatch
+" let g:two_firewatch_italics=1
+" colorscheme two-firewatch
 " let ayucolor ="mirage"
-" colorscheme ayu
+colorscheme ayu
 " let g:solarized_term_italics=1
 " colorscheme solarized8
 " colorscheme seti
 
 " NERDTree Settings
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.swp', '\.git']
+let NERDTreeIgnore = ['\.swp', '\.git$']
 
 " Ack settings
 if executable('ag')
