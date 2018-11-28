@@ -25,7 +25,7 @@ autocmd filetype go setlocal noexpandtab
 " Vim airline settings
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='twofirewatch'
+let g:airline_theme='ayu_mirage'
 let g:airline_powerline_fonts=1
 
 " Gitgutter disable mappings
@@ -36,13 +36,16 @@ set hidden
 
 " Let vim using X plus register
 set clipboard=unnamedplus
+
+" Colorscheme settings
 " let g:two_firewatch_italics=1
 " colorscheme two-firewatch
-" let ayucolor ="mirage"
+let ayucolor ="mirage"
 colorscheme ayu
+" set background=light
 " let g:solarized_term_italics=1
 " colorscheme solarized8
-" colorscheme seti
+" colorscheme badwolf
 
 " NERDTree Settings
 let NERDTreeShowHidden=1
@@ -63,7 +66,12 @@ noremap <leader>f :Ack!<Space>
 noremap <leader>g :Gstatus<CR>
 nnoremap <leader>c :%s/\s\+$//g<CR>
 nnoremap <silent> <Space> :nohlsearch<CR>
-" imap jj <Esc>
+nmap <leader>m :messages<CR>
+
+" Golang shortcut
+noremap <leader>gd :GoDef<CR>
+noremap <leader>gr :GoRun<CR>
+noremap <leader>T :GoTestFunc<CR>
 
 " Buffer shortcut
 nmap <leader>n :enew<CR>
@@ -74,25 +82,3 @@ nmap <leader>bl :ls<CR>
 
 " Quickfix window
 noremap <F9> :call asyncrun#quickfix_toggle(15)<cr>
-noremap <leader>T :call RunTest()<cr>
-
-" Custom vimscripts
-let g:lastFileTested = ""
-function! IsTestFile()
-    let filename = @%
-    let match = matchstr(filename, 'test\.php$')
-    return !empty(match)
-endfunction
-
-function! RunTest()
-    let filename = @%
-    if !IsTestFile()
-        let filename = g:lastFileTested
-    else
-        let g:lastFileTested = filename
-    endif
-
-    if filename != ""
-        execute "AsyncRun ./vendor/bin/phpunit -c . " . filename
-    endif
-endfunction
