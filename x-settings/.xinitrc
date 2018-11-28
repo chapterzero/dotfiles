@@ -48,5 +48,14 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+(conky | while read LINE; do xsetroot -name "$LINE"; done) &
+feh --bg-fill /home/chapterzero/gQQHuVs.jpg --no-xinerama
+
 xset r rate 350 30
-xsetroot -cursor_name left_ptr
+
+while true; do
+    # Log stderror to a file 
+    dwm 2> ~/.dwm.log
+    # No error logging
+    #dwm >/dev/null 2>&1
+done
