@@ -28,7 +28,6 @@ prepare() {
 build() {
   cd $srcdir/$pkgname-$pkgver
   patch -Np1 -i "${srcdir}/dwm-bottomstack-6.1.diff"
-  # patch -Np1 -i "${srcdir}/dwm-statuscolors-6.1.diff"
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
 

@@ -1,8 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
+
 /* appearance */
 static const char *fonts[] = {
-	"Font Awesome 5 Free:size=10",
 	"Cantarell:size=9"
 };
 
@@ -23,7 +24,7 @@ static const char normfgcolor[]     = "#FFFFFF";
 static const char selbordercolor[]  = "#FF0000";
 static const char selbgcolor[]      = "#222288";
 static const char selfgcolor[]      = "#FFFFFF";
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -43,6 +44,10 @@ static const Rule rules[] = {
 /* Media Keys */
 static const char *voldown[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
 static const char *volup[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
+
+/* Brightness keys */
+static const char *brightUp[] = { "xbacklight", "-inc", "10", NULL };
+static const char *brightDown[] = { "xbacklight", "-dec", "10", NULL };
 
 /* Slock */
 static const char *slock[] = { "slock", NULL };
@@ -100,10 +105,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = +1 } },
+	{ MODKEY,                       XK_period, focusmon,       {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = -1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -119,6 +124,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_l,      spawn,         {.v = slock} },
     { 0,                            XK_Print,  spawn,         SHCMD("scrot ~/screenshots/%Y-%m-%d_%T-screenshot.png") },
 	{ MODKEY,                       XK_Print,  spawn,         SHCMD("sleep 0.2; scrot -s ~/screenshots/%Y-%m-%d_%T-screenshot.png") },
+    { 0,                 XF86XK_MonBrightnessUp,    spawn,            {.v = brightUp } },
+    { 0,                 XF86XK_MonBrightnessDown,  spawn,            {.v = brightDown } },
 };
 
 /* button definitions */
