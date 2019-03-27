@@ -1,18 +1,18 @@
-call plug#begin('~/.vim/plugged2')
-" Plug 'scrooloose/nerdtree'
-" Plug 'tpope/vim-vinegar'
+call plug#begin()
+Plug 'francoiscabrol/ranger.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-commentary'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'chrisbra/csv.vim'
-Plug 'morhetz/gruvbox'
-Plug 'altercation/vim-colors-solarized'
+Plug 'arakashic/nvim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
+Plug 'chrisbra/csv.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'tomasr/molokai'
 call plug#end()
 
@@ -23,20 +23,20 @@ set softtabstop=4
 set shiftwidth=4
 set ignorecase
 " set number
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 set hidden
-set hlsearch
-let g:netrw_banner = 0
 
 " Colorscheme settings
-set background=dark
-" set termguicolors
+set termguicolors
 " let g:gruvbox_italic=1
 " colorscheme gruvbox
+" colorscheme nord
+colorscheme solarized
+" let g:palenight_terminal_italics=1
+" colorscheme palenight
 " colorscheme ayu
 
 " lightline settings
-set laststatus=2
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
@@ -57,7 +57,8 @@ nnoremap <leader>bd :bd<CR>
 nnoremap <leader>h :bprevious<CR>
 nnoremap <leader>l :bnext<CR>
 nnoremap <leader>f :Ag<Space>
-nnoremap <leader>e :Ex<CR>
+nnoremap <leader>e :RangerCurrentFile<CR>
+nnoremap <leader>E :RangerWorkingDirectory<CR>
 nnoremap <leader><Space> :nohlsearch<CR>
 nnoremap <leader>res :vertical resize 120<CR>
 
@@ -67,3 +68,6 @@ source $HOME/.config/nvim/golang.vim
 " Plugins settings
 " AG with options
 source $HOME/.config/nvim/ag_with_opts.vim
+
+" Disable default key map
+let g:ranger_map_keys=0
