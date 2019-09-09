@@ -20,10 +20,8 @@
 *color15: #EEEEEC
 
 ! URXVT Settings
-URxvt*font: xft:Inconsolata\\-g-11, \
-            xft:Cantarell-11
-URxvt.scrollBar: false
-URxvt.perl-ext:
-URxvt.perl-ext-common:
-URxvt.iso14755: false
-URxvt.iso14755_52: false
+URxvt.font: xft:Meslo LG S DZ-10, \
+			xft:Source Han Sans CN-10, \
+			xft:Source Han Sans TW-10
+URxvt.letterSpace: -1
+URxvt.scrollBar: False
