@@ -1,23 +1,28 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 Plug 'vim-syntastic/syntastic'
 Plug 'morhetz/gruvbox'
-Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-two-firewatch'
 Plug 'ayu-theme/ayu-vim'
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'haishanh/night-owl.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'mhartington/oceanic-next'
 call plug#end()
 
+let g:racer_cmd = "/home/chapterzero/.cargo/bin/racer"
 
 " Editor basic settings
+set incsearch
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -28,17 +33,13 @@ set autoindent
 set hlsearch
 
 " Colorscheme settings
-if has('gui_running')
-	set background=dark
-	colorscheme nord
-	let g:airline_powerline_fonts = 1
-	let g:solarized_italic = 1
-	" set guifont=Meslo\ LG\ M\ DZ\ 10
-	set guifont=Iosevka\ 12
-else
-	set background=dark
-	colorscheme pablo
-endif
+set termguicolors
+set background=dark
+let g:airline_powerline_fonts = 1
+colorscheme OceanicNext
+" let g:two_firewatch_italics=1
+" colo two-firewatch
+" let g:airline_theme='twofirewatch' " if you have Airline installed and want the associated theme
 
 " Shortcut
 let mapleader = ","
@@ -53,18 +54,7 @@ nnoremap <leader>E :NERDTreeFind<CR>
 nnoremap <leader><Space> :nohlsearch<CR>
 nnoremap <leader>res :vertical resize 120<CR>
 
-" Golang shortcut
-source $HOME/.vim/customscript/golang.vim
+let NERDTreeIgnore = ['\.pyc$', '\.swp$']
 
-" Rust shortcut
-source $HOME/.vim/customscript/rust.vim
-
-" Python shortcut & settings
-source $HOME/.vim/customscript/python.vim
-
-" Plugins settings
-" AG with options
-source $HOME/.vim/customscript/ag_with_opts.vim
-
-" lightline settings
-" source $HOME/.vim/customscript/lightline.vim
+autocmd FileType rust source ~/.vim/customscripts/rust.vim
+autocmd FileType go source ~/.vim/customscripts/go.vim
